@@ -1,4 +1,5 @@
 const sqlite3 = require("sqlite3").verbose();
+const {log} = require('next-axiom')
 
 // funcion para crear la tabla en la base de datos sqlite
 const crearTabla = (db) => {
@@ -14,8 +15,10 @@ const crearTabla = (db) => {
   // Ejecuta la sentencia SQL para crear la tabla
   db.run(sqlCreateTable, function (err) {
     if (err) {
+      log.error('crearTabla',err);
       return console.error("Error al crear la tabla:", err.message);
     }
+    log.info('crearTabla','Tabla "solicitudes" creada correctamente');
     console.log('Tabla "solicitudes" creada correctamente');
   });
 };
@@ -30,8 +33,10 @@ const registrarSolicitud = async (datos) => {
   return new Promise((resolve, reject) => {
     db?.get(sql, function (err, row) {
       if (err) {
+        log.error("Error al crear la tabla:", err);
         reject({ status: 400, mensaje: "Error al crear solicitud" });
       } else {
+        log.info('registrarSolicitud','Registro existoso');
         resolve({ status: 200, mensaje: "Registro existoso!" });
       }
     });
