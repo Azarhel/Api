@@ -9,7 +9,12 @@ const corsOptions = {
 
 app.use(express.json()); // Middleware para parsear el cuerpo de las peticiones a JSON
 
-
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://mi-primera-app-beta.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 
 // Aquí van tus endpoints o rutas
 app.get("/", (req, res) => res.send("Express on Vercel"));
