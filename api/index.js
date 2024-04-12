@@ -3,7 +3,7 @@ const cors = require("cors"); // Importa el paquete CORS
 const app = express();
 const servicio = require("./service/fotoServicio");
 const corsOptions = {
-  origin: 'mi-primera-app-beta.vercel.app',
+  origin: 'https://mi-primera-app-beta.vercel.app',
   optionsSuccessStatus: 200,
 };
 
