@@ -16,7 +16,7 @@ app.post("/api/v1/contacto", async (req, res) => {
 
 app.get("/api/v1/crearTabla", async (req, res) => {
   let respuesta = await servicio.crearTabla();
-  res.status(200).json(respuesta);
+  res.status(respuesta.status).json({ mensaje: respuesta.mensaje });
 });
 
 app.listen(3000, () => console.log("Server ready on port 3000."));
